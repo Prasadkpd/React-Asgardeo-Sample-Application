@@ -1,7 +1,7 @@
 {
-    "clientID": "",
-    "signInRedirectURL": "https://localhost:3000/home",
-    "signOutRedirectURL": "https://localhost:3000",
-    "serverOrigin": "",
+    "clientID": "gcdKHpHCvEEn3SUlPGvhi3tfBkwa",
+    "signInRedirectURL": "http://localhost:3000/home",
+    "signOutRedirectURL": "http://localhost:3000",
+    "serverOrigin": "https://api.asgardeo.io/t/prasadkpd",
     "scope": [ "openid","profile" ]
 }

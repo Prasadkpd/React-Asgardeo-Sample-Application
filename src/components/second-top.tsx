@@ -7,7 +7,7 @@ import { withRouter } from 'react-router';
 export const SecondTopSection = (props: any) => {
 
   const [authenticateState, setAuthenticateState] = useState<any>(null);
-  const { state, signOut, getBasicUserInfo, getIDToken, getDecodedIDToken } = useAuthContext();
+  const { state, signOut, getBasicUserInfo, getIDToken, getDecodedIDToken , getAccessToken} = useAuthContext();
 
   useEffect(() => {
     if (state?.isAuthenticated) {
@@ -15,12 +15,14 @@ export const SecondTopSection = (props: any) => {
         const basicUserInfo = await getBasicUserInfo();
         const idToken = await getIDToken();
         const decodedIDToken = await getDecodedIDToken();
+        const accessToken = await getAccessToken();
 
         const authState: any = {
           authenticateResponse: basicUserInfo,
           idToken: idToken.split("."),
           decodedIdTokenHeader: JSON.parse(atob(idToken.split(".")[0])),
-          decodedIDTokenPayload: decodedIDToken
+          decodedIDTokenPayload: decodedIDToken,
+          accessTokenResponse: accessToken
         };
 
         setAuthenticateState(authState);
@@ -35,6 +37,7 @@ export const SecondTopSection = (props: any) => {
       <div className='container'>
         <div className='section-title'>
           <h2>Asgardeo Auth React SDK API Samples</h2>
+          <p>{authenticateState?.accessTokenResponse}</p>
         </div>
         <div className='row'>
           <div className='col-md-4 json'>
